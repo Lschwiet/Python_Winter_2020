@@ -26,17 +26,11 @@ class Rectangle(Shape):
     def calc_perimeter(self):
         return 2 * self._a + 2 * self.b
 
-class Square(Shape):
+class Square(Rectangle):
     def __init__(self, a):
         # call constructor of superclass (parent)
-        super().__init__(a, 0)
+        super().__init__(a, a)
         #self._a = a
-
-    def calc_surface(self):
-        return self._a**2
-
-    def calc_perimeter(self):
-        return 4 * self._a
 
 import math
 
@@ -63,6 +57,9 @@ class Triangle(Shape):
     def calc_perimeter(self):
         return
 
+    def __repr__(self):
+        return self.__class__.__name__ + " [Width = " + str(self._a) + ",Height = " + str(self.b) + "] at " + str(hex(id(self)))
+
 class EquilateralTriangle(Shape):
     def __init__(self, a):
         super().__init__(a, 0)
@@ -72,6 +69,9 @@ class EquilateralTriangle(Shape):
 
     def calc_perimeter(selfs):
         return 3 * self._a
+
+    def __repr__(self):
+        return self.__class__.__name__ + " [sidelength = " + str(self._a) + "] at " + str(hex(id(self)))
 
 r = Rectangle(5, 6)
 print(r)
@@ -90,3 +90,7 @@ print(t.calc_surface())
 
 et = EquilateralTriangle(2)
 print(et.calc_surface())
+
+s = Square(3)
+print(s.calc_surface())
+print(s.calc_perimeter())
